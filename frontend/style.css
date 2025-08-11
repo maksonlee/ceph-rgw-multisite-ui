@@ -1,0 +1,362 @@
+/* --- Theme & Base --- */
+:root {
+    --c-primary: #006d3a;
+    --c-on-primary: #fff;
+    --c-bg: #f8f9fa;
+    --c-surface: #fff;
+    --c-text: #212529;
+    --c-text-muted: #6c757d;
+    --c-border: #dee2e6;
+    --c-header-bg: #0B1220;
+    --c-header-text: #e9ecef;
+    --state-hover: rgba(33, 37, 41, 0.05);
+    --state-focus: rgba(33, 37, 41, 0.1);
+    --spacing: 16px;
+    --radius: 12px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: var(--spacing);
+    font-family: system-ui, -apple-system, sans-serif;
+    line-height: 1.5;
+    background: var(--c-bg);
+    color: var(--c-text);
+}
+
+/* --- Layout & Cards --- */
+.container {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--c-header-bg);
+    color: var(--c-header-text);
+    padding: 10px var(--spacing);
+    border-radius: var(--radius);
+    margin-bottom: var(--spacing);
+}
+
+.top-bar__brand {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.top-bar__nav {
+    display: flex;
+    gap: 8px;
+}
+
+.top-bar__link {
+    color: #9CA3AF;
+}
+
+header, .card {
+    background: var(--c-surface);
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius);
+    padding: var(--spacing);
+    margin-bottom: var(--spacing);
+}
+
+header {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.card > h3 {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--c-header-bg);
+    color: var(--c-header-text);
+    padding: 8px var(--spacing);
+    margin: calc(var(--spacing) * -1) calc(var(--spacing) * -1) var(--spacing);
+    border-radius: var(--radius) var(--radius) 0 0;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+h3 > span:first-child {
+    /* The "Objects" title */
+    flex-shrink: 0;
+}
+
+.card > h3 > label {
+    margin-left: auto;
+    color: #9CA3AF; /* Lighter gray for better contrast on dark header */
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.card > h3 input {
+    accent-color: var(--c-text);
+    vertical-align: middle;
+    margin-right: 4px;
+}
+
+/* ==========================================================================
+   4. FORMS & BUTTONS
+   ========================================================================== */
+input,
+select {
+    padding: 10px 14px;
+    border: 1px solid var(--c-border);
+    border-radius: 8px;
+    background: var(--c-surface);
+    color: var(--c-text);
+    transition: box-shadow .15s ease, border-color .15s ease;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: var(--c-text);
+    box-shadow: 0 0 0 2px var(--state-focus);
+}
+
+input::placeholder {
+    color: var(--c-text-muted);
+}
+
+.upload-grid #uploadKey {
+    min-width: 360px;
+}
+
+.btn {
+    padding: 10px 24px;
+    border-radius: 999px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .15s ease;
+    /* Default: Outlined Button */
+    border: 1px solid var(--c-border);
+    background: transparent;
+    color: var(--c-text);
+}
+
+.btn:hover {
+    background: var(--state-hover);
+}
+
+.btn--filled {
+    background: var(--c-primary);
+    color: var(--c-on-primary);
+    border-color: transparent;
+}
+
+.btn--filled:hover {
+    background: var(--c-primary);
+    filter: brightness(1.1);
+}
+
+.btn[disabled] {
+    opacity: .5;
+    cursor: not-allowed;
+    background: #e9ecef;
+    color: var(--c-text-muted);
+    border-color: transparent;
+}
+
+/* ==========================================================================
+   5. UI COMPONENTS
+   ========================================================================== */
+.small {
+    font-size: 12px;
+    color: var(--c-text-muted);
+}
+
+.upload-grid {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+#breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    min-width: 0;
+    border: 1px solid var(--c-border);
+    background: var(--c-surface);
+    padding: 2px 10px;
+    border-radius: 8px;
+    gap: 4px;
+    color: var(--c-text);
+}
+
+#fileList {
+    padding: 0;
+    margin: 0 calc(-1 * var(--spacing)) calc(-1 * var(--spacing)); /* Extend to card edges */
+}
+
+.row {
+    display: grid;
+    /* Columns: Name, Last Modified, Size, Actions */
+    grid-template-columns: 1fr 180px 100px 40px;
+    gap: 1rem;
+    align-items: center;
+    padding: 8px 16px;
+    border-top: 1px solid var(--c-border);
+    transition: background .12s ease;
+}
+
+.row .modified {
+    color: var(--c-text-muted);
+}
+
+.row .size {
+    text-align: right;
+    font-family: monospace;
+    color: var(--c-text-muted);
+}
+
+.row:first-child {
+    border-top: 0;
+}
+
+.row:hover {
+    background: var(--state-hover);
+}
+
+.name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+}
+
+.icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    color: var(--c-text-muted);
+}
+
+.icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+.link {
+    color: var(--c-text);
+    text-decoration: none;
+    border-radius: 8px;
+    padding: 4px 6px;
+    margin: -4px -6px; /* Offset padding for better click area */
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0; /* Allow link to shrink inside its flex container (.name) */
+}
+
+.link-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.link:hover {
+    background: var(--state-hover);
+}
+
+h3 #breadcrumb .link {
+    color: var(--c-text);
+    padding: 2px 6px;
+    margin: -2px -6px;
+}
+
+h3 #breadcrumb .link:hover {
+    background: var(--state-hover);
+}
+
+.badge {
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 999px;
+    border: 1px solid var(--c-border);
+    background: var(--c-bg);
+    color: var(--c-text-muted);
+    font-weight: 500;
+}
+
+.badge:empty {
+    display: none;
+}
+
+.b-ok {
+    color: #00210d;
+    border-color: #96f7b4;
+    background: #d1fce0;
+}
+
+.b-warn {
+    color: #854d0e;
+    border-color: #fde68a;
+    background: #fff7e6;
+}
+
+.b-del {
+    color: #410002;
+    border-color: #ffb4ab;
+    background: #ffdad6;
+}
+
+/* Custom file input */
+input[type="file"].visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+.filebadge {
+    padding: 8px 12px;
+    border: 1px dashed var(--c-border);
+    border-radius: 8px;
+    background: var(--c-surface);
+    min-width: 220px;
+    color: var(--c-text-muted);
+}
+
+/* --- Action Buttons in Row --- */
+.actions {
+    text-align: right;
+}
+
+.btn-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: transparent;
+    color: var(--c-text-muted);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background .15s ease, color .15s ease;
+}
+
+.btn-icon:hover {
+    background: var(--state-hover);
+    color: #d9534f; /* Red for delete action */
+}
