@@ -1,0 +1,9 @@
+export const API_BASE = 'http://<your-backend-api-url>';
+
+export const OIDC_CONFIG = {
+    authority: 'https://keycloak.your-domain.com/realms/myrealm',
+    client_id: 'ceph-rgw-browser',
+    redirect_uri: window.location.origin + '/',
+    response_type: 'code',
+    scope: 'openid profile email',
+};

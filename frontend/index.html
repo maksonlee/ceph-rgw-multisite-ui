@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Ceph RGW S3 Multi-Site UI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<div class="container">
+    <!-- ScanCode-like top bar -->
+    <div class="top-bar">
+        <div class="top-bar__brand">Ceph RGW S3 Multi-Site UI</div>
+        <div class="top-bar__nav">
+        </div>
+    </div>
+
+    <header>
+        <button id="login" class="btn btn--filled">Login</button>
+
+        <label>Zone:
+            <select id="zoneSelect"></select>
+        </label>
+
+    </header>
+
+    <div id="loginPrompt" class="card" style="display: none; text-align: center; padding: 2rem;">
+        Please log in to browse objects.
+    </div>
+
+    <section class="card">
+        <h3>Upload</h3>
+        <div class="upload-grid">
+            <input type="file" id="fileInput" class="visually-hidden"/>
+            <label for="fileInput" class="btn">Browse…</label>
+            <span id="fileChosen" class="filebadge small">No file selected.</span>
+            <input id="uploadKey" placeholder="Key (defaults to filename, supports folder/sub/file)"/>
+            <button id="uploadBtn" class="btn" disabled>Upload</button>
+            <span id="uploadStatus" class="small"></span>
+        </div>
+    </section>
+
+    <section class="card">
+        <h3>
+            <span>Objects</span>
+            <div id="breadcrumb" class="small"></div>
+            <label for="showStatus" class="small">
+                <input type="checkbox" id="showStatus"> Auto refresh
+            </label>
+        </h3>
+        <div id="fileList">—</div>
+    </section>
+</div>
+
+<template id="objectRowTemplate">
+    <div class="row">
+        <div class="name"> <!-- Col 1: Icon & Name -->
+            <a href="#" class="link">
+                <span class="icon"></span>
+                <span class="link-text"></span>
+            </a>
+            <span class="badge"></span>
+        </div>
+        <div class="modified"></div>
+        <div class="size"></div>
+        <div class="actions"></div> <!-- Col 3: Action Buttons -->
+    </div>
+</template>
+
+<!-- ES module so top-level `import` in app.js works -->
+<script type="module" src="app.js"></script>
+</body>
+</html>
